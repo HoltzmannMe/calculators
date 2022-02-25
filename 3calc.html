@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CIS 115 - Assignment 7 - Calculator</title>
+    <meta charset="UTF-8">
+    <style>
+        #oper, #equal{
+            margin: 0 10px;
+        }
+        .dec, .inc{
+            padding: 1px 0px;
+        }
+    </style>
+    <script>
+        const el = (id) => document.getElementById(id);
+        const cls = (cls) => document.getElementsByClassName(cls);
+        const val = (id) => el(id).value;
+        const forEl = (e) => e.target.getAttribute("for");
+        const calculate = (f, s) => {
+            f = parseInt(val(f)), s = parseInt(val(s));
+            switch(val("oper")){
+                case "+": return f + s;
+                case "-": return f - s;
+                case "*": return f * s;
+                case "/": return f / s;
+            }
+        }
+        window.onload = () => {
+            el("equal").onclick = () => el("result").value = calculate("firstNum", "secondNum");
+            for(x of cls("dec")) x.onclick = (e) => (el(forEl(e)).value = +val(forEl(e)) - 1)
+            for(x of cls("inc")) x.onclick = (e) => (el(forEl(e)).value = +val(forEl(e)) + 1)
+        }
+    </script>
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body>
+    <h2>Calculator</h2>
+    <button class="dec" for="firstNum">▼</button>
+    <input type="text" id="firstNum" value="100" size=1/>
+    <button class="inc" for="firstNum">▲</button>
+    <select id="oper">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select>
+    <button class="dec" for="secondNum">▼</button>
+    <input type="text" id="secondNum" value="100" size=1/>
+    <button class="inc" for="secondNum">▲</button>
+    <input type="button" id="equal" value="=">
+    <input type="text" id="result" placeholder="Result" readonly onfocus="this.blur();">
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d4e783928e6fe28',m:'la.nQKGyK7M_JVBswq1vr91aqu3nvHk6m0EsHdMVdIs-1643417461-0-AcdaUXXTW9fzTfp6gWuabHjAOlnCrX/70glzul28/1zybq+g6W16zUIFjsdTrEbaS+BXZoidDbiqsyWeCgF9KeiQhN83LWSntJrFX3mfrBGV9vsBQPUJMYGMFhH4WSnez5d/uNkrNUbwp+7+Bprr4yM7GC3jrC9Yns5nmXQ1Fx070gZ3kNZphqYECYSJH5hk4Q==',s:[0xe5a7e2a528,0xf3a71bf7a9],}})();</script></body>
+
+</html>

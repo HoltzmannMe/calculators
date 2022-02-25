@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CIS 115 - Assignment 7 - Calculator</title>
+    <meta charset="UTF-8">
+    <style></style>
+    <script>
+        const el = (id) => document.getElementById(id);
+        const check = (id) => el("op_" + id).checked;
+        const calculate = (f, s) => {
+            f = parseInt(el(f).value), s = parseInt(el(s).value);
+            if(check("plus")) return f + s
+            if(check("minus")) return f - s
+            if(check("mul")) return f * s
+            else return f / s
+        }
+        window.onload = () => (el("button").onclick = () => el("result").value = calculate("firstNum", "secondNum"))
+    </script>
+<script async src='/cdn-cgi/bm/cv/669835187/api.js'></script></head>
+<body>
+    <h2>Calculator</h2>
+    <form>
+        <input type="text" id="firstNum" value="100"/>
+        <br><br>
+        <form>
+            <div>
+                <input type="radio" id="op_plus" name="operator" value="op_plus" checked>
+                <label for="op_plus">Addition</label><br>
+                <input type="radio" id="op_minus" name="operator" value="op_minus">
+                <label for="op_minus">Substraction</label><br>
+                <input type="radio" id="op_mul" name="operator" value="op_mul">
+                <label for="op_mul">Multiplication</label><br>
+                <input type="radio" id="op_div" name="operator" value="op_div">
+                <label for="op_div">Division</label><br>
+            </div>
+        </form><br>
+        <input type="text" id="secondNum" value="100"/>
+        <input type="button" id="button" value="=" onclick="handleClick()">
+        <input type="text" id="result" placeholder="Result" readonly onfocus="this.blur();">
+    </form>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d4e73453f1cfe28',m:'hNH_34A7TCGoAIumivh8DtB8JERUD3oXC0nZinW7OsM-1643417258-0-Af26OQ5qF4YQOuwcBqFzzXTL4ncWoecn9jSvsfFXakIqj7A5UoeCiCYqeqG4oQ/LtHO6CzlmFiMZfKun/8kkiB26ql7g0vTD7Q2zuKqt2k5Mtk3TKEYA1JdHPBEk2168e7+fU8vLWYbquCYdg4jxJgstAyTPAdSZpuDlrvFUplbQlxqARfFrbsq6yvciKDAhJQ==',s:[0x006e6d69dd,0x4df614f79b],}})();</script></body>
+
+</html>
